@@ -33,8 +33,12 @@ public class TutorialMod {
         MinecraftForge.EVENT_BUS.register(this);
 
         /// Register stuff on the bus
+        ModCreativeModTabs.register(modEventBus);
+
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
+
 
         modEventBus.addListener(this::addCreative);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
