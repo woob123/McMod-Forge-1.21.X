@@ -1,8 +1,10 @@
 package net.woob123.tutorialmod.block;
 
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -29,6 +31,17 @@ public class ModBlocks {
                      .strength(4F)
                      .requiresCorrectToolForDrops()
                      .sound(SoundType.STONE)));
+
+    public static final RegistryObject<Block> ALEXANDRITE_ORE = registerBlock("alexandrite_ore",
+            () -> new DropExperienceBlock(UniformInt.of(2, 4), BlockBehaviour.Properties.of()
+                    .strength(2F)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.STONE)));
+    public static final RegistryObject<Block> DEEPSLATE_ALEXANDRITE_ORE = registerBlock("deepslate_alexandrite_ore",
+            () -> new DropExperienceBlock(UniformInt.of(2, 4), BlockBehaviour.Properties.of()
+                    .strength(3F)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.DEEPSLATE)));
 
 
 

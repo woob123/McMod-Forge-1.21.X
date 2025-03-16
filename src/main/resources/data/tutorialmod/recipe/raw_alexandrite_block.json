@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "xxx",
+    "xxx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "tutorialmod:raw_alexandrite"
+    }
+  },
+  "result": {
+    "id": "tutorialmod:raw_alexandrite_block",
+    "count": 1
+  }
+}

@@ -5,5 +5,8 @@
   "block.tutorialmod.alexandrite_block": "Block of Alexandrite",
   "block.tutorialmod.raw_alexandrite_block": "Block of Raw Alexandrite",
 
+  "block.tutorialmod.alexandrite_ore": "Alexandrite Ore",
+  "block.tutorialmod.deepslate_alexandrite_ore": "Deepslate Alexandrite Ore",
+
   "creativetab.tutorialmod.alexandrite_items": "Alexandrite Items"
 }
