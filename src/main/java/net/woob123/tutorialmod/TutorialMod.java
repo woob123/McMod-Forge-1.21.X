@@ -1,6 +1,7 @@
 package net.woob123.tutorialmod;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -13,6 +14,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.woob123.tutorialmod.item.ModItems;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -26,14 +28,14 @@ public class TutorialMod {
 
     public TutorialMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
-        // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
         MinecraftForge.EVENT_BUS.register(this);
-        // Register the item to a creative tab
+
+        /// Register stuff on the bus
+        ModItems.register(modEventBus);
+
+
         modEventBus.addListener(this::addCreative);
-        // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
@@ -41,9 +43,13 @@ public class TutorialMod {
 
     }
 
-    // Add the example block item to the building blocks tab
+    // Add stuff to creative tabs
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
+        /// Basically what this does: if the tab is INGREDIENTS, please accept my items
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+            event.accept(ModItems.ALEXANDRITE);
+            event.accept(ModItems.RAW_ALEXANDRITE);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
