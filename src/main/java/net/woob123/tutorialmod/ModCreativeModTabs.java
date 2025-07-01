@@ -30,6 +30,16 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.MAGIC_BLOCK.get());
                     })
                     .build());
+    public static final RegistryObject<CreativeModeTab> FOOD_ITEMS = CREATIVE_MODE_TABS.register("food_items",
+            () -> CreativeModeTab.builder()
+                    .icon(() -> new ItemStack(ModItems.KOHLRABI.get()))
+                    .title(Component.translatable("creativetab.tutorialmod.food_items"))
+                    .displayItems((itemDisplayParameters, output) ->{
+                        output.accept(ModItems.KOHLRABI.get());
+                        output.accept(ModItems.BRANDY.get());
+                        output.accept(ModItems.AURORA_ASHES.get());
+                    })
+                    .build());
 
     public static void register(IEventBus bus) {
         CREATIVE_MODE_TABS.register(bus);

@@ -6,7 +6,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.woob123.tutorialmod.TutorialMod;
+import net.woob123.tutorialmod.item.custom.BrandyItem;
 import net.woob123.tutorialmod.item.custom.ChiselItem;
+import net.woob123.tutorialmod.item.custom.FuelItem;
 
 public class ModItems {
 
@@ -22,6 +24,14 @@ public class ModItems {
 
     public static final RegistryObject<Item> CHISEL = ITEMS.register("chisel",
             () -> new ChiselItem(new Item.Properties().durability(32)));
+
+    public static final RegistryObject<Item> KOHLRABI = ITEMS.register("kohlrabi",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.KOHLRABI)));
+    public static final RegistryObject<Item> BRANDY = ITEMS.register("brandy",
+            () -> new BrandyItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> AURORA_ASHES = ITEMS.register("aurora_ashes",
+            () -> new FuelItem(new Item.Properties(), 1200));
 
     public static void register(IEventBus bus) {
         ITEMS.register(bus);
