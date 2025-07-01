@@ -2,6 +2,7 @@ package net.woob123.tutorialmod;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.level.block.SpongeBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -48,7 +49,7 @@ public class TutorialMod {
 
     }
 
-    // Add stuff to creative tabs
+    /// Add stuff to creative tabs
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         /// Basically what this does: if the tab is INGREDIENTS, please accept my items
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
