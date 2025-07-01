@@ -1,6 +1,9 @@
 package net.woob123.tutorialmod.item;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -9,6 +12,8 @@ import net.woob123.tutorialmod.TutorialMod;
 import net.woob123.tutorialmod.item.custom.BrandyItem;
 import net.woob123.tutorialmod.item.custom.ChiselItem;
 import net.woob123.tutorialmod.item.custom.FuelItem;
+
+import java.util.List;
 
 public class ModItems {
 
@@ -20,7 +25,13 @@ public class ModItems {
     public static final RegistryObject<Item> ALEXANDRITE = ITEMS.register("alexandrite",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAW_ALEXANDRITE = ITEMS.register("raw_alexandrite",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties()){
+                @Override
+                public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+                    pTooltipComponents.add(Component.translatable("tooltip.tutorialmod.raw_alexandrite"));
+                    super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+                }
+            }); ///this adds tooltips without the need of a custom item/block class
 
     public static final RegistryObject<Item> CHISEL = ITEMS.register("chisel",
             () -> new ChiselItem(new Item.Properties().durability(32)));

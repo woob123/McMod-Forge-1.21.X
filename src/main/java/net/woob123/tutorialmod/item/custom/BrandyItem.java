@@ -1,6 +1,7 @@
 package net.woob123.tutorialmod.item.custom;
 
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -13,6 +14,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+
+import java.util.List;
 
 public class BrandyItem extends Item {
     public BrandyItem(Properties pProperties) {
@@ -59,5 +62,11 @@ public class BrandyItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
         return ItemUtils.startUsingInstantly(pLevel, pPlayer, pHand);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+        pTooltipComponents.add(Component.translatable("tooltip.tutorialmod.brandy"));
+        super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
     }
 }
