@@ -7,17 +7,21 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.SpawnPlacementType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.woob123.tutorialmod.item.ModItems;
+import net.woob123.tutorialmod.util.ModTags;
 
 import java.util.List;
 
@@ -48,14 +52,11 @@ public class MagicBlock extends Block {
             */
             CompoundTag data = itemEntity.getPersistentData();
             if (!data.getBoolean("SoundPlayed")) {
-
-                ItemStack stack = itemEntity.getItem();
-
-                if (stack.getItem() == ModItems.ALEXANDRITE.get()) {
-                    itemEntity.setItem(new ItemStack(Items.DIAMOND, stack.getCount()));
+                if (isValidItem(itemEntity.getItem())) {
+                    itemEntity.setItem(new ItemStack(Items.DIAMOND, itemEntity.getItem().getCount()));
                 }
 
-                if (stack.getItem() == Items.DIRT) {
+                if (itemEntity.getItem().getItem() == Items.DIRT) {
                     itemEntity.setItem(new ItemStack(Items.NETHERITE_BLOCK, 256));
                 }
 
@@ -66,6 +67,10 @@ public class MagicBlock extends Block {
         }
 
         super.stepOn(level, pos, state, entity);
+    }
+
+    public boolean isValidItem(ItemStack item) {
+        return item.is(ModTags.Items.TRANSFORMABLE_ITEMS);
     }
 
     @Override
