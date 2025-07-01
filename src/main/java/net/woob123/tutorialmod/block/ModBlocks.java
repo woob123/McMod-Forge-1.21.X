@@ -12,6 +12,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.woob123.tutorialmod.TutorialMod;
+import net.woob123.tutorialmod.block.custom.MagicBlock;
 import net.woob123.tutorialmod.item.ModItems;
 
 import java.util.function.Supplier;
@@ -42,6 +43,12 @@ public class ModBlocks {
                     .strength(3F)
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> MAGIC_BLOCK = registerBlock("magic_block",
+            () -> new MagicBlock(BlockBehaviour.Properties.of()
+                    .strength(2f)
+                    .requiresCorrectToolForDrops()
+            ));
 
 
 
